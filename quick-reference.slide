@@ -1,14 +1,23 @@
-Quick Reference
+Go Quick Reference
 
-* Comments
+* Comments & Keywords
 
-Line Comments `//`
-General Comments `/* */`
+Line Comments
 
-* Keywords
 
-break        default      func         interface    select
-case         defer        go           map          struct
-chan         else         goto         package      switch
-const        fallthrough  if           range        type
-continue     for          import       return       var
+  // I am a comment
+
+General Comments
+
+
+  /* I am a comment */
+
+Keywords
+
+  break        default      func         interface    select
+  case         defer        go           map          struct
+  chan         else         goto         package      switch
+  const        fallthrough  if           range        type
+  continue     for          import       return       var
+
+* Test Slide
