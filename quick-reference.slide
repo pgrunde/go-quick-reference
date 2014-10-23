@@ -1,5 +1,15 @@
 Go Quick Reference
 
+- #2
+- #3
+- #4
+- #5
+- #6
+- #7
+- #8
+- #9
+- #10
+
 * Comments & Keywords
 
 Line Comments
@@ -8,7 +18,6 @@ Line Comments
   // I am a comment
 
 General Comments
-
 
   /* I am a comment */
 
@@ -20,4 +29,110 @@ Keywords
   const        fallthrough  if           range        type
   continue     for          import       return       var
 
-* Test Slide
+* Variables
+
+`var` declares a list of variables- the type is declared last
+
+.play code/variables.go
+
+* Constants
+
+Constants in Go are created at compile time, and can only be numbers, characters(runes), strings or booleans. Here the type and value are displayed with `%T` and `%v`.
+
+.play code/constants.go
+
+* Enumerable Constants
+
+`iota` creates enumerated constants starting at 0:
+
+.play code/enum-constants.go
+
+* Arrays & Slices
+
+Array
+
+  ArrayType   = [ ArrayLength ] ElementType .
+
+Slice
+
+  SliceType = [ ] ElementType .
+
+Create a Slice:
+
+  make([]T, length, capacity)
+
+Equivalent slice expressions:
+
+  make([]int, 50, 100)
+  new([100]int)[0:50]
+
+* Func
+
+  func()
+  func(x int) int
+  func(a, _ int, z float32) bool
+  func(a, b int, z float32) (bool)
+  func(prefix string, values ...int)
+  func(a, b int, z float64, opt ...interface{}) (success bool)
+  func(int, int, float64) (float64, *[]int)
+  func(n int) func(p *T)
+
+Simple Example
+
+  func main() {
+      fmt.Println(wordAdd("one"," two"))
+  }
+
+  func wordAdd(str1, str2 string) string {
+      return str1 + str2
+  }
+
+This returns "one two"
+
+* Func with multiple result parameters
+
+This function returns two result parameters, which is why it specifies two return values and types (the '(x, y int)')
+
+  func split(sum int) (x, y int) {
+      x = sum * 4 / 9
+      y = sum - x
+      return
+  }
+
+This function returns both two strings and a boolean:
+
+  func wording(text string) (str1, str2 string, boolean bool) {
+    str1 = "..." + text + "!\n"
+    str2 = text + "!!!\n"
+    boolean = true
+    return
+  }
+
+* Structs
+
+Structs contain key-value information in a pre-defined pattern. Here a User has an Id, a FirstName, and a LastName, then we make a new user. Note `:=` which is used to both to declare and instantiate `u` as a User.
+
+.play code/structs.go
+
+* Interface
+
+An interface is a set of methods, ex;
+
+  interface {
+  	Read(b Buffer) bool
+  	Write(b Buffer) bool
+  	Close()
+  }
+
+You can nest interfaces;
+
+  type ReadWrite interface {
+  	Read(b Buffer) bool
+  	Write(b Buffer) bool
+  }
+
+  type File interface {
+  	ReadWrite  // same as enumerating the methods in ReadWrite
+  	Lock       // same as enumerating the methods in Lock
+  	Close()
+  }
